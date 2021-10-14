@@ -160,3 +160,5 @@ $$
 ## 文字缩进语法```&emsp;```
 ---
 提交到GitHub
+注意提交信息，windows下提交时跳出的编辑器是给你写描述信息的，要不然会出现下列情况（rename the file就是提交的信息）
+![](https://pic3.58cdn.com.cn/nowater/webim/big/n_v2795e2ee29cbd4b6591f7eda24141667d.png)
