@@ -133,3 +133,19 @@ git push origin master(默认)
  ```
  查看远程仓库信息
  ```git remote show [remote-name]```
+
+
+ **远程仓库的删除和重命名** 
+ 在新版 Git 中可以用 git remote rename 命令修改某个远程仓库的简短名称，比如想把
+pb 改成 paul，可以这么运行：
+```git remote rename pb paul```
+### tips
+1.当git push报错无法推送时，试着改一下网络：
+```
+git config --global --unset http.proxy
+gti config --global --unset https.proxy
+```
+2.git email 报错
+![](https://pic3.58cdn.com.cn/nowater/webim/big/n_v28d739959542e4cf2960e4581288c3843.png)
+3.令牌报错
+[链接]（https://blog.csdn.net/qq_46941656/article/details/119737804）
