@@ -82,7 +82,7 @@ int main(void)
 
 
 ---
-[github地址]（https://github.com/HKUST-Aerial-Robotics/GVINS）
+[github地址](https://github.com/HKUST-Aerial-Robotics/GVINS)
 
 ```
 语法：

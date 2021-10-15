@@ -36,3 +36,4 @@ git branch -v
 git branch --merged
 git branch --no-merged
 ```
+[git 合并原理](https://zhuanlan.zhihu.com/p/192972614)
