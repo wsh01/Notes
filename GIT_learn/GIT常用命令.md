@@ -18,7 +18,7 @@ $ git config --global user.email 1958407035@qq.com
 ```$ git init```
 
  **检查当前文件状态**(重要)
- ```git atatus```
+ ```git status```
 
  跟踪新文件
  ```git add （文件名）```

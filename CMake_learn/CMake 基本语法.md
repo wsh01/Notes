@@ -1,0 +1,69 @@
+# cmake语法
+*参考资料《modern-cmake》*
+## 基础介绍
+### 最小版本支持
+  CMakeLists.txt文件里的第一行：
+  ```C
+  cmake_minimum_required(VERSION 3.1)
+  ```
+  cmake_minimum_required不区分大小写，VERSION是一个关键字，必须大写。这个语句规定了cmake的最低版本，一般选择3.1以上版本，3.1及以上版本称为现代cmake。Linux对版本不太敏感，如果在其他系统就需要特别注意。Linux ubount 18.04的cmake版本为3.10.2。
+ - 具体怎么选择最低版本支持现在还不清楚，现在看到的项目重要选择有2.8 3.1 3.2 和3.5
+ - 留个坑以后填
+  
+  ### 创建项目
+  完整格式如下：
+  ```c
+   project(MyProject VERSION 1.0 
+   DESCRIPTION "Very nice project" 
+   LANGUAGES CXX)
+  ```
+  其中CXX代表C++，该语句默认语言为C和C++，通常可忽略（一般不会用cmake构建其他语言）。
+  一般工程中常用的格式如下：
+  ```c
+  project(BlueSkyPilot)
+  ```
+  只是起名称的作用。
+  ### 生成可执行文件
+  ```c
+add_executable(one two.cpp three.h)
+  ```
+  ```one```是生成可执行文件的名称，后面是两个同文件下的源文件。
+
+  **上面三句就可以构成一个最小的cmake工程。**
+  ### 生成库文件
+  ```c
+add_library(one STATIC two.cpp three.h)
+  ```
+  ```STATIC```代表生成的是静态库，还可以使用```SHARED``` ```SHARED```等关键词生成共享库等其他库文件。
+  ### Targets命令
+  target是一系列强大的命令，比如你想要包含头文件目录：
+  ```c
+target_include_directories(one PUBLIC include)
+  ```
+  这样就可以把include目录下的头文件包含到编译工程中了。
+
+关于编译关键字：
+  >```PUBLIC``` doesn't mean much for an executable; for a library it lets CMake know that any targets that link to this target must also need that include directory. Other options are ```PRIVATE``` (only affect the current target, not dependencies), and ```INTERFACE``` (only needed for dependencies).
+  >```PUBLIC```对于可执行文件来说并没有多大意义,对于库，它让CMake知道任何链接到这个目标的目标也必须包含目录。其他选择是```PRIVATE```,(只影响当前目标，不影响依赖项)和```INTERFACE```(仅依赖项需要)
+
+-什么意思？不理解，留坑~
+### 链接
+```c
+add_library(another STATIC another.cpp another.h)
+target_link_libraries(another PUBLIC one)
+```
+不懂什么是链接，留坑~
+### 总结
+把上面的语句结合起来就是一个简单的cmake文件：
+```c
+  cmake_minimum_required(VERSION 3.8)
+
+  project(Calculator LANGUAGES CXX)
+
+  add_library(calclib STATIC src/calclib.cpp include/calc/lib.hpp)  
+  target_include_directories(calclib PUBLIC include) 
+  target_compile_features(calclib PUBLIC cxx_std_11) //指定编译标准
+
+  add_executable(calc apps/calc.cpp)
+  target_link_libraries(calc PUBLIC calclib)
+```
