@@ -14,3 +14,6 @@
 
 * ```rm a.out```删除a.out文件
 * ```rm -rf cmake```删除cmake文件夹
+
+5.显示隐藏文件
+* ```ls -a```
